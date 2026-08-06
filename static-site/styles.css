@@ -1,0 +1,425 @@
+:root {
+  --background: #fffaf4;
+  --foreground: #173536;
+  --muted: #6f6760;
+  --teal: #0f4b4b;
+  --rose: #b95b65;
+  --gold: #b98735;
+  --ivory: #fffaf4;
+  --cream: #f4eadc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-image: url("./engagement-hero.png");
+  background-position: center right;
+  background-size: cover;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 250, 244, 0.96) 0%, rgba(255, 250, 244, 0.78) 43%, rgba(255, 250, 244, 0.16) 100%),
+    linear-gradient(0deg, rgba(15, 75, 75, 0.08), rgba(15, 75, 75, 0.08));
+}
+
+.heroContent {
+  position: relative;
+  width: min(650px, calc(100% - 40px));
+  margin-left: clamp(20px, 7vw, 96px);
+  padding: 96px 0 72px;
+}
+
+.eyebrow,
+.script {
+  margin: 0 0 16px;
+  color: var(--rose);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  margin: 0;
+  color: var(--teal);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+h1 {
+  max-width: 12ch;
+  font-size: clamp(2.65rem, 6.8vw, 5.8rem);
+  line-height: 0.98;
+}
+
+.coupleTitle {
+  display: grid;
+  gap: 8px;
+}
+
+.coupleTitle strong {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.18em;
+  font: inherit;
+  white-space: nowrap;
+}
+
+.coupleTitle small {
+  color: var(--gold);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.3em;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+}
+
+.coupleTitle em {
+  width: fit-content;
+  margin: 4px 0 2px;
+  color: var(--rose);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  font-style: italic;
+  line-height: 0.9;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.intro {
+  max-width: 520px;
+  margin: 28px 0 0;
+  color: #314747;
+  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+  line-height: 1.65;
+}
+
+.heroActions,
+.footerActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 36px;
+}
+
+.primaryButton,
+.secondaryButton {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0 24px;
+  border: 1px solid var(--teal);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.primaryButton {
+  background: var(--teal);
+  color: white;
+  box-shadow: 0 18px 45px rgba(15, 75, 75, 0.22);
+}
+
+.secondaryButton {
+  background: rgba(255, 250, 244, 0.7);
+  color: var(--teal);
+}
+
+.videoBand {
+  padding: clamp(48px, 8vw, 90px) 20px;
+  background: linear-gradient(180deg, var(--ivory), #f7efe4);
+}
+
+.videoContent {
+  width: min(960px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.videoFrame {
+  overflow: hidden;
+  border: 1px solid rgba(15, 75, 75, 0.18);
+  border-radius: 8px;
+  background: #102f2f;
+  box-shadow: 0 28px 70px rgba(15, 75, 75, 0.18);
+}
+
+.videoFrame video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.audioNotice {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.videoControls {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 20px;
+  padding: 8px;
+  border: 1px solid rgba(15, 75, 75, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 250, 244, 0.76);
+}
+
+.videoControls button {
+  min-height: 38px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--teal);
+  color: white;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0 16px;
+  text-transform: uppercase;
+}
+
+.videoControls span {
+  min-width: 46px;
+  color: var(--teal);
+  font-weight: 800;
+}
+
+.countdownBand {
+  padding: clamp(48px, 7vw, 78px) 20px;
+  background: #fff8ef;
+}
+
+.countdownContent {
+  width: min(820px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.countdownGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 75, 75, 0.16);
+  border-radius: 8px;
+  background: rgba(15, 75, 75, 0.16);
+}
+
+.countdownGrid span {
+  display: grid;
+  gap: 8px;
+  padding: clamp(22px, 4vw, 34px) 12px;
+  background: var(--ivory);
+  color: var(--rose);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.countdownGrid strong {
+  color: var(--teal);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.2rem, 6vw, 4.2rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 0.95;
+}
+
+.calendarButton {
+  min-height: 48px;
+  margin-top: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--teal);
+  border-radius: 999px;
+  background: var(--teal);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0 24px;
+  text-transform: uppercase;
+}
+
+.detailsBand {
+  background: var(--teal);
+  color: white;
+  padding: 34px clamp(20px, 5vw, 72px);
+}
+
+.detailsGrid {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.detailCard {
+  min-height: 148px;
+  padding: 28px;
+  background: var(--teal);
+}
+
+.detailCard span {
+  display: block;
+  margin-bottom: 14px;
+  color: #f2d9b4;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.detailCard strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.detailCard p {
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+.messageBand {
+  padding: clamp(64px, 10vw, 116px) 20px;
+  background:
+    radial-gradient(circle at top left, rgba(185, 91, 101, 0.16), transparent 34%),
+    linear-gradient(180deg, var(--ivory), var(--cream));
+}
+
+.messageContent {
+  width: min(780px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.messageContent h2 {
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  line-height: 1.06;
+}
+
+.messageContent p {
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+.messageContent .footerActions {
+  justify-content: center;
+}
+
+.rsvp {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 18px;
+  color: var(--teal);
+}
+
+.rsvp span {
+  width: 100%;
+  color: var(--rose);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.rsvp a {
+  color: var(--teal);
+  font-weight: 800;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    min-height: 86vh;
+    align-items: flex-end;
+    background-position: 64% center;
+  }
+
+  .heroOverlay {
+    background:
+      linear-gradient(0deg, rgba(255, 250, 244, 0.98) 0%, rgba(255, 250, 244, 0.82) 45%, rgba(255, 250, 244, 0.14) 100%),
+      linear-gradient(0deg, rgba(15, 75, 75, 0.08), rgba(15, 75, 75, 0.08));
+  }
+
+  .heroContent {
+    width: calc(100% - 32px);
+    margin: 0 auto;
+    padding: 260px 0 42px;
+  }
+
+  h1 {
+    font-size: clamp(2.8rem, 14vw, 4.7rem);
+  }
+
+  .coupleTitle strong {
+    font-size: clamp(2.25rem, 11vw, 4.1rem);
+  }
+
+  .coupleTitle small {
+    font-size: 0.9rem;
+  }
+
+  .detailsGrid,
+  .countdownGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+  }
+}
