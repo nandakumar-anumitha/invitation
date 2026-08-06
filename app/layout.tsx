@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+const siteUrl = "https://nandakumar-anumitha.github.io/invitation/";
+const ogImageUrl =
+  "https://nandakumar-anumitha.github.io/invitation/og-whatsapp-v2.jpg";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -24,11 +28,15 @@ export const metadata: Metadata = {
     title: "V. Nandakumar & K. Anumitha Engagement Invitation",
     description:
       "You are invited to celebrate their engagement on 23.08.2026 at 10:30 AM.",
+    url: siteUrl,
+    siteName: "Nandakumar & Anumitha Engagement Invitation",
+    type: "website",
     images: [
       {
-        url: "/og.png",
+        url: ogImageUrl,
         width: 1200,
         height: 630,
+        type: "image/jpeg",
         alt: "Engagement invitation for V. Nandakumar and K. Anumitha",
       },
     ],
@@ -38,7 +46,7 @@ export const metadata: Metadata = {
     title: "V. Nandakumar & K. Anumitha Engagement Invitation",
     description:
       "You are invited to celebrate their engagement on 23.08.2026 at 10:30 AM.",
-    images: ["/og.png"],
+    images: [ogImageUrl],
   },
 };
 
