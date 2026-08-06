@@ -5,7 +5,7 @@ const videos = [
     useTamilSong: true,
   },
   {
-    title: "Final version",
+    title: "A Special Glimpse",
     src: "./final-version.mp4",
     useTamilSong: false,
   },
@@ -19,6 +19,14 @@ const song = document.getElementById("tamilSong");
 const title = document.getElementById("videoTitle");
 const counter = document.getElementById("videoCounter");
 const audioNotice = document.getElementById("audioNotice");
+const videoFrame = document.getElementById("videoFrame");
+const videoDots = Array.from(document.querySelectorAll("[data-video-index]"));
+const shareText = encodeURIComponent(
+  `You are warmly invited to V. Nandakumar B.E & CMA K. Anumitha B.COM's engagement on 23.08.2026 at 10:30 AM, Prem Mahal. ${window.location.href}`
+);
+const mapShareText = encodeURIComponent(
+  "Venue location: Prem Mahal, 1st Main Road, MMDA, TNHB Layout, Mathur, Tamil Nadu. Map: https://www.google.com/maps/search/?api=1&query=Prem%20Mahal%2C%201st%20Main%20Road%2C%20MMDA%2C%20TNHB%20Layout%2C%20Mathur%2C%20Tamil%20Nadu"
+);
 
 function renderVideo() {
   const active = videos[activeVideoIndex];
@@ -27,8 +35,17 @@ function renderVideo() {
   title.textContent = active.title;
   source.src = active.src;
   video.muted = active.useTamilSong;
+  videoFrame.classList.toggle("firstVideoFrame", activeVideoIndex === 0);
+  videoFrame.classList.toggle("secondVideoFrame", activeVideoIndex === 1);
+  if (activeVideoIndex === 0) {
+    video.setAttribute("poster", "./engagement-video-poster-rings.png");
+  } else {
+    video.setAttribute("poster", "./second-video-poster.svg");
+  }
   video.load();
-  counter.textContent = `${activeVideoIndex + 1} / ${videos.length}`;
+  videoDots.forEach((dot, index) => {
+    dot.classList.toggle("activeDot", index === activeVideoIndex);
+  });
   audioNotice.hidden = true;
 }
 
@@ -76,6 +93,14 @@ document.getElementById("nextVideo").addEventListener("click", () => {
   selectVideo(activeVideoIndex + 1);
 });
 
+videoDots.forEach((dot) => {
+  dot.addEventListener("click", () => {
+    selectVideo(Number(dot.dataset.videoIndex));
+  });
+});
+
+document.getElementById("shareInviteFooter").setAttribute("href", `https://wa.me/?text=${mapShareText}`);
+
 function updateCountdown() {
   const eventStart = new Date("2026-08-23T10:30:00+05:30");
   const remaining = Math.max(0, eventStart.getTime() - Date.now());
@@ -85,20 +110,6 @@ function updateCountdown() {
   document.getElementById("hours").textContent = String(Math.floor((totalMinutes % 1440) / 60));
   document.getElementById("minutes").textContent = String(totalMinutes % 60);
 }
-
-document.getElementById("copyLink").addEventListener("click", async (event) => {
-  const button = event.currentTarget;
-
-  try {
-    await navigator.clipboard.writeText(window.location.href);
-    button.textContent = "Link Copied";
-    window.setTimeout(() => {
-      button.textContent = "Copy Link";
-    }, 2200);
-  } catch {
-    button.textContent = "Copy unavailable";
-  }
-});
 
 updateCountdown();
 window.setInterval(updateCountdown, 60000);
