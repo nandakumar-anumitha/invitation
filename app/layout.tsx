@@ -24,7 +24,21 @@ export const metadata: Metadata = {
     title: "V. Nandakumar & K. Anumitha Engagement Invitation",
     description:
       "You are invited to celebrate their engagement on 23.08.2026 at 10:30 AM.",
-    images: ["/engagement-hero.png"],
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Engagement invitation for V. Nandakumar and K. Anumitha",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "V. Nandakumar & K. Anumitha Engagement Invitation",
+    description:
+      "You are invited to celebrate their engagement on 23.08.2026 at 10:30 AM.",
+    images: ["/og.png"],
   },
 };
 
