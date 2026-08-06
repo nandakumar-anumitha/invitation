@@ -128,6 +128,11 @@ export default function Home() {
 
   return (
     <main>
+      <div className="petalRain" aria-hidden="true">
+        {Array.from({ length: 12 }, (_, index) => (
+          <span key={index} />
+        ))}
+      </div>
       <section className="hero" aria-label="Engagement invitation">
         <div className="heroOverlay" />
         <div className="heroContent">

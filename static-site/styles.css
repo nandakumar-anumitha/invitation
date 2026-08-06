@@ -34,6 +34,63 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+.petalRain {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.petalRain span {
+  position: absolute;
+  top: -48px;
+  left: calc(var(--x) * 1%);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 70% 30% 70% 30%;
+  background:
+    radial-gradient(circle at 68% 32%, rgba(255, 255, 255, 0.86), transparent 25%),
+    linear-gradient(135deg, rgba(255, 211, 220, 0.9), rgba(185, 91, 101, 0.72));
+  box-shadow: 0 6px 14px rgba(185, 91, 101, 0.12);
+  opacity: 0.72;
+  transform: rotate(45deg);
+  animation: petalFall var(--duration) linear infinite;
+  animation-delay: var(--delay);
+}
+
+.petalRain span:nth-child(1) { --x: 6; --size: 13px; --duration: 12s; --delay: -1s; }
+.petalRain span:nth-child(2) { --x: 14; --size: 9px; --duration: 15s; --delay: -8s; }
+.petalRain span:nth-child(3) { --x: 21; --size: 15px; --duration: 13s; --delay: -4s; }
+.petalRain span:nth-child(4) { --x: 29; --size: 10px; --duration: 17s; --delay: -11s; }
+.petalRain span:nth-child(5) { --x: 37; --size: 12px; --duration: 14s; --delay: -6s; }
+.petalRain span:nth-child(6) { --x: 44; --size: 8px; --duration: 16s; --delay: -13s; }
+.petalRain span:nth-child(7) { --x: 52; --size: 14px; --duration: 12s; --delay: -9s; }
+.petalRain span:nth-child(8) { --x: 61; --size: 10px; --duration: 18s; --delay: -3s; }
+.petalRain span:nth-child(9) { --x: 69; --size: 13px; --duration: 15s; --delay: -12s; }
+.petalRain span:nth-child(10) { --x: 77; --size: 9px; --duration: 13s; --delay: -5s; }
+.petalRain span:nth-child(11) { --x: 84; --size: 15px; --duration: 17s; --delay: -10s; }
+.petalRain span:nth-child(12) { --x: 93; --size: 11px; --duration: 14s; --delay: -2s; }
+@keyframes petalFall {
+  0% {
+    transform: translate3d(0, -8vh, 0) rotate(20deg);
+  }
+
+  50% {
+    transform: translate3d(34px, 52vh, 0) rotate(170deg);
+  }
+
+  100% {
+    transform: translate3d(-24px, 108vh, 0) rotate(330deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petalRain {
+    display: none;
+  }
+}
+
 .hero {
   position: relative;
   min-height: 92vh;
