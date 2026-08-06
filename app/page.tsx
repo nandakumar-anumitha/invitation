@@ -24,7 +24,7 @@ const videos = [
     useTamilSong: true,
   },
   {
-    title: "Final version",
+    title: "A Special Glimpse",
     src: "/final-version.mp4",
     useTamilSong: false,
   },
@@ -38,16 +38,23 @@ export default function Home() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
   const [audioReady, setAudioReady] = useState(true);
-  const [copyStatus, setCopyStatus] = useState("Copy Link");
+  const [inviteUrl, setInviteUrl] = useState("");
   const [now, setNow] = useState(() => new Date());
   const activeVideo = videos[activeVideoIndex];
   const couple = `${invitation.groom} ${invitation.groomDegree} & ${invitation.bride} ${invitation.brideDegree}`;
   const primaryContact = invitation.contacts[0];
-  const whatsappMessage = encodeURIComponent(
-    `Hello ${primaryContact.name}, I would like to RSVP for ${couple}'s engagement.`
-  );
   const mapQuery = encodeURIComponent(
     `${invitation.venue}, ${invitation.address}`
+  );
+  const inviteShareMessage = `You are warmly invited to ${couple}'s engagement on ${invitation.date} at ${invitation.time}, ${invitation.venue}. ${inviteUrl}`;
+  const shareText = encodeURIComponent(
+    inviteShareMessage
+  );
+  const mapShareText = encodeURIComponent(
+    `Venue location: ${invitation.venue}, ${invitation.address}. Map: https://www.google.com/maps/search/?api=1&query=${mapQuery}`
+  );
+  const whatsappMessage = encodeURIComponent(
+    `Congratulations to ${couple} on their engagement. Wishing them a lifetime of happiness and togetherness.`
   );
   const countdown = useMemo(() => {
     const remaining = Math.max(0, eventStart.getTime() - now.getTime());
@@ -75,6 +82,7 @@ export default function Home() {
 
   useEffect(() => {
     const timer = window.setInterval(() => setNow(new Date()), 60000);
+    setInviteUrl(window.location.href);
 
     return () => window.clearInterval(timer);
   }, []);
@@ -118,17 +126,6 @@ export default function Home() {
     }
   };
 
-  const copyInviteLink = async () => {
-    if (typeof window === "undefined" || !navigator.clipboard) {
-      setCopyStatus("Copy unavailable");
-      return;
-    }
-
-    await navigator.clipboard.writeText(window.location.href);
-    setCopyStatus("Link Copied");
-    window.setTimeout(() => setCopyStatus("Copy Link"), 2200);
-  };
-
   return (
     <main>
       <section className="hero" aria-label="Engagement invitation">
@@ -149,28 +146,44 @@ export default function Home() {
             </span>
           </h1>
           <p className="intro">
-            With joy in our hearts, we invite you to bless the beginning of
-            their forever on {invitation.date} at{" "}
+            With the blessings of our families, we invite you to bless the
+            beginning of their forever on {invitation.date} at{" "}
             <span className="nowrap">{invitation.time}.</span>
           </p>
+          <p className="tamilLine">உங்கள் ஆசீர்வாதம் எங்கள் வாழ்வின் இனிய தொடக்கமாகும்</p>
           <div className="heroActions" aria-label="Invitation actions">
             <a className="primaryButton" href="#details">
               View Details
             </a>
             <a
               className="secondaryButton"
-              href={`https://wa.me/91${primaryContact.phone.replace(/\D/g, "")}?text=${whatsappMessage}`}
+              href={`https://wa.me/?text=${whatsappMessage}`}
             >
-              RSVP
+              Send Wishes
             </a>
           </div>
         </div>
       </section>
 
+      <section className="saveDateBand" aria-label="Save the date">
+        <div className="saveDateCard">
+          <span>Save the Date</span>
+          <strong>{invitation.date}</strong>
+          <p>
+            {invitation.time} | {invitation.venue}
+          </p>
+        </div>
+      </section>
+
       <section className="videoBand" aria-label="Engagement invitation video">
         <div className="videoContent">
-          <p className="script">{activeVideo.title}</p>
-          <div className="videoFrame">
+          <p className="script">Invitation Films</p>
+          <h2 className="videoHeading">{activeVideo.title}</h2>
+          <div
+            className={`videoFrame ${
+              activeVideoIndex === 0 ? "firstVideoFrame" : "secondVideoFrame"
+            }`}
+          >
             <video
               key={activeVideo.src}
               ref={videoRef}
@@ -178,7 +191,11 @@ export default function Home() {
               muted={activeVideo.useTamilSong}
               playsInline
               preload="metadata"
-              poster="/engagement-hero.png"
+              poster={
+                activeVideoIndex === 0
+                  ? "/engagement-video-poster-rings.png"
+                  : "/second-video-poster.svg"
+              }
               onPlay={() => {
                 void syncSongToVideo();
               }}
@@ -206,9 +223,17 @@ export default function Home() {
             <button type="button" onClick={showPreviousVideo}>
               Previous
             </button>
-            <span>
-              {activeVideoIndex + 1} / {videos.length}
-            </span>
+            <div className="videoDots" aria-label="Choose video">
+              {videos.map((videoItem, index) => (
+                <button
+                  key={videoItem.src}
+                  type="button"
+                  className={index === activeVideoIndex ? "activeDot" : ""}
+                  aria-label={`Show ${videoItem.title}`}
+                  onClick={() => selectVideo(index)}
+                />
+              ))}
+            </div>
             <button type="button" onClick={showNextVideo}>
               Next
             </button>
@@ -223,7 +248,7 @@ export default function Home() {
 
       <section className="countdownBand" aria-label="Countdown to engagement">
         <div className="countdownContent">
-          <p className="script">Counting down</p>
+          <p className="script">The Auspicious Day Awaits</p>
           <div className="countdownGrid">
             <span>
               <strong>{countdown.days}</strong>
@@ -260,6 +285,19 @@ export default function Home() {
             <p>{invitation.address}</p>
           </article>
         </div>
+        <div className="venuePreview">
+          <div>
+            <span>Venue Location</span>
+            <strong>{invitation.venue}, Mathur</strong>
+            <p>{invitation.address}</p>
+          </div>
+          <a
+            className="venueMapButton"
+            href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`}
+          >
+            Open Map
+          </a>
+        </div>
       </section>
 
       <section className="messageBand" aria-label="Invitation message">
@@ -269,6 +307,9 @@ export default function Home() {
           <p>
             Your presence will make this celebration warmer and more memorable.
           </p>
+          <p className="tamilBlessing">
+            உங்கள் அன்பும் ஆசீர்வாதமும் எங்கள் விழாவை சிறப்பாக்கும்.
+          </p>
           <div className="footerActions">
             <a
               className="primaryButton"
@@ -276,29 +317,41 @@ export default function Home() {
             >
               Open Map
             </a>
-            <button
-              className="secondaryButton"
-              type="button"
-              onClick={() => {
-                void copyInviteLink();
-              }}
-            >
-              {copyStatus}
-            </button>
+            <a className="secondaryButton" href={`https://wa.me/?text=${mapShareText}`}>
+              Share Map Location
+            </a>
           </div>
-          <div className="rsvp">
-            <span>Contact</span>
+          <div className="rsvp contactCards">
+            <span>For Assistance</span>
             {invitation.contacts.map((contact) => (
-              <a
-                key={contact.phone}
-                href={`tel:+91${contact.phone.replace(/\D/g, "")}`}
-              >
-                {contact.name} - {contact.phone}
-              </a>
+              <div className="contactCard" key={contact.phone}>
+                <strong>{contact.name}</strong>
+                <p>{contact.phone}</p>
+                <div>
+                  <a href={`tel:+91${contact.phone.replace(/\D/g, "")}`}>
+                    Call
+                  </a>
+                  <a
+                    href={`https://wa.me/91${contact.phone.replace(/\D/g, "")}?text=${encodeURIComponent(
+                      "Hello, I need help with the engagement venue location."
+                    )}`}
+                  >
+                    WhatsApp
+                  </a>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
+      <nav className="mobileQuickBar" aria-label="Quick actions">
+        <a href={`https://wa.me/?text=${whatsappMessage}`}>
+          Send Wishes
+        </a>
+        <a href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`}>
+          Map
+        </a>
+      </nav>
     </main>
   );
 }
