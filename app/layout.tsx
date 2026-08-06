@@ -4,7 +4,7 @@ import "./globals.css";
 
 const siteUrl = "https://nandakumar-anumitha.github.io/invitation/";
 const ogImageUrl =
-  "https://nandakumar-anumitha.github.io/invitation/og-whatsapp-v2.jpg";
+  "https://nandakumar-anumitha.github.io/invitation/og-whatsapp-big.jpg";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
       {
         url: ogImageUrl,
         width: 1200,
-        height: 630,
+        height: 1200,
         type: "image/jpeg",
         alt: "Engagement invitation for V. Nandakumar and K. Anumitha",
       },
