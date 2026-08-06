@@ -54,7 +54,7 @@ export default function Home() {
     `Venue location: ${invitation.venue}, ${invitation.address}. Map: https://www.google.com/maps/search/?api=1&query=${mapQuery}`
   );
   const whatsappMessage = encodeURIComponent(
-    `Congratulations to ${couple} on their engagement. Wishing them a lifetime of happiness and togetherness.`
+    "Congratulations to Nandakumar & Anumitha on their engagement. Wishing them a lifetime of happiness and togetherness."
   );
   const countdown = useMemo(() => {
     const remaining = Math.max(0, eventStart.getTime() - now.getTime());
@@ -333,7 +333,7 @@ export default function Home() {
                   </a>
                   <a
                     href={`https://wa.me/91${contact.phone.replace(/\D/g, "")}?text=${encodeURIComponent(
-                      "Hello, I need help with the engagement venue location."
+                      "Hello, I am contacting you regarding the engagement ceremony."
                     )}`}
                   >
                     WhatsApp
