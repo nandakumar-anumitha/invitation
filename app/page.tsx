@@ -4,9 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 const invitation = {
   groom: "V. Nandakumar",
-  groomDegree: "B.E",
   bride: "CMA K. Anumitha",
-  brideDegree: "B.COM",
   date: "23.08.2026",
   time: "10:30 AM",
   venue: "Prem Mahal",
@@ -41,7 +39,7 @@ export default function Home() {
   const [inviteUrl, setInviteUrl] = useState("");
   const [now, setNow] = useState(() => new Date());
   const activeVideo = videos[activeVideoIndex];
-  const couple = `${invitation.groom} ${invitation.groomDegree} & ${invitation.bride} ${invitation.brideDegree}`;
+  const couple = `${invitation.groom} & ${invitation.bride}`;
   const primaryContact = invitation.contacts[0];
   const mapQuery = encodeURIComponent(
     `${invitation.venue}, ${invitation.address}`
@@ -139,15 +137,11 @@ export default function Home() {
           <p className="eyebrow">Engagement Ceremony</p>
           <h1 className="coupleTitle">
             <span>
-              <strong>
-                {invitation.groom} <small>{invitation.groomDegree}</small>
-              </strong>
+              <strong>{invitation.groom}</strong>
             </span>
             <em>&</em>
             <span>
-              <strong>
-                {invitation.bride} <small>{invitation.brideDegree}</small>
-              </strong>
+              <strong>{invitation.bride}</strong>
             </span>
           </h1>
           <p className="intro">
@@ -327,7 +321,7 @@ export default function Home() {
             </a>
           </div>
           <div className="rsvp contactCards">
-            <span>For Assistance</span>
+            <span>Awaiting your presence</span>
             {invitation.contacts.map((contact) => (
               <div className="contactCard" key={contact.phone}>
                 <strong>{contact.name}</strong>
