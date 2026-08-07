@@ -17,7 +17,7 @@ const invitation = {
 
 const videos = [
   {
-    title: "Invitation video",
+    title: "A Sacred Beginning",
     src: "/engagement-video.mp4",
     useTamilSong: true,
   },
@@ -149,7 +149,7 @@ export default function Home() {
             beginning of their forever on {invitation.date} at{" "}
             <span className="nowrap">{invitation.time}.</span>
           </p>
-          <p className="tamilLine">உங்கள் ஆசீர்வாதம் எங்கள் வாழ்வின் இனிய தொடக்கமாகும்</p>
+          <p className="tamilLine">உங்கள் வருகையால் எங்கள் நாள் இன்னும் அழகாகும்</p>
           <div className="heroActions" aria-label="Invitation actions">
             <a className="primaryButton" href="#details">
               View Details
@@ -178,6 +178,9 @@ export default function Home() {
         <div className="videoContent">
           <p className="script">Invitation Films</p>
           <h2 className="videoHeading">{activeVideo.title}</h2>
+          <p className="videoCaption">
+            A sacred start to a lifetime of togetherness.
+          </p>
           <div
             className={`videoFrame ${
               activeVideoIndex === 0 ? "firstVideoFrame" : "secondVideoFrame"
@@ -192,7 +195,7 @@ export default function Home() {
               preload="metadata"
               poster={
                 activeVideoIndex === 0
-                  ? "/engagement-video-poster-rings.png"
+                  ? "/first-video-temple-poster.png"
                   : "/second-video-poster.svg"
               }
               onPlay={() => {
@@ -307,7 +310,7 @@ export default function Home() {
             Your presence will make this celebration warmer and more memorable.
           </p>
           <p className="tamilBlessing">
-            உங்கள் அன்பும் ஆசீர்வாதமும் எங்கள் விழாவை சிறப்பாக்கும்.
+            உங்கள் வருகையும் வாழ்த்துகளும் எங்கள் விழாவை அழகாக்கும்.
           </p>
           <div className="footerActions">
             <a
