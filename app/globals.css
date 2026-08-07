@@ -439,15 +439,7 @@ h1 {
   aspect-ratio: 16 / 9;
 }
 
-.firstVideoFrame video {
-  object-fit: contain;
-  object-position: center;
-  background:
-    linear-gradient(135deg, rgba(255, 250, 244, 0.98), rgba(244, 234, 220, 0.92)),
-    radial-gradient(circle at 20% 20%, rgba(185, 91, 101, 0.12), transparent 34%),
-    radial-gradient(circle at 82% 76%, rgba(185, 135, 53, 0.2), transparent 38%);
-}
-
+.firstVideoFrame,
 .secondVideoFrame {
   width: min(430px, 100%);
   margin: 0 auto;
@@ -458,10 +450,12 @@ h1 {
     radial-gradient(circle at 80% 80%, rgba(185, 135, 53, 0.24), transparent 38%);
 }
 
+.firstVideoFrame video,
 .secondVideoFrame video {
   height: 100%;
   aspect-ratio: auto;
   object-fit: contain;
+  object-position: center;
 }
 
 .audioNotice {
