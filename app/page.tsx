@@ -72,7 +72,7 @@ export default function Home() {
     );
 
     return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-      `${couple} Engagement Ceremony`
+      `${couple} Promise Ceremony`
     )}&dates=${formatDate(eventStart)}/${formatDate(eventEnd)}&details=${details}&location=${encodeURIComponent(
       `${invitation.venue}, ${invitation.address}`
     )}`;
@@ -134,7 +134,7 @@ export default function Home() {
       <section className="hero" aria-label="Engagement invitation">
         <div className="heroOverlay" />
         <div className="heroContent">
-          <p className="eyebrow">Engagement Ceremony</p>
+          <p className="eyebrow">Promise Ceremony</p>
           <h1 className="coupleTitle">
             <span>
               <strong>{invitation.groom}</strong>
@@ -146,7 +146,7 @@ export default function Home() {
           </h1>
           <p className="intro">
             With the blessings of our families, we invite you to bless the
-            beginning of their forever on {invitation.date} at{" "}
+            beginning of our forever on {invitation.date} at{" "}
             <span className="nowrap">{invitation.time}.</span>
           </p>
           <p className="tamilLine tamilPoem">
@@ -341,7 +341,7 @@ export default function Home() {
                   </a>
                   <a
                     href={`https://wa.me/91${contact.phone.replace(/\D/g, "")}?text=${encodeURIComponent(
-                      "Hello, I am contacting you regarding the engagement ceremony."
+                      "Hello, I am contacting you regarding the promise ceremony."
                     )}`}
                   >
                     WhatsApp

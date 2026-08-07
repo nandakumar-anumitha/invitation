@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "V. Nandakumar & K. Anumitha Engagement Invitation",
   description:
-    "Join V. Nandakumar and K. Anumitha for their engagement ceremony on 23.08.2026 at Prem Mahal, Mathur.",
+    "Join V. Nandakumar and K. Anumitha for their promise ceremony on 23.08.2026 at Prem Mahal, Mathur.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
