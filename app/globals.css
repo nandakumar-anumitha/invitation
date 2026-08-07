@@ -209,18 +209,24 @@ h1 {
 }
 
 .coupleTitle em {
-  width: fit-content;
-  margin: 2px auto 0;
-  padding: 7px 24px 8px;
+  width: 46px;
+  height: 46px;
+  margin: 3px auto 0;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
   border-top: 1px solid rgba(185, 135, 53, 0.38);
   border-bottom: 1px solid rgba(185, 135, 53, 0.38);
-  color: var(--gold);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.38rem, 2.5vw, 2.1rem);
-  font-style: italic;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(255, 246, 220, 0.95), rgba(255, 246, 220, 0.22) 62%, transparent 63%),
+    linear-gradient(90deg, transparent, rgba(185, 135, 53, 0.12), transparent);
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+  font-size: 1.42rem;
+  font-style: normal;
   line-height: 1;
-  filter: sepia(0.42) saturate(0.82) hue-rotate(350deg);
-  text-shadow: 0 5px 14px rgba(154, 111, 36, 0.2);
+  filter: none;
+  text-shadow: 0 6px 14px rgba(154, 111, 36, 0.16);
 }
 
 .intro {
@@ -263,24 +269,6 @@ h1 {
   color: #9a3654;
   font-size: clamp(1.08rem, 2vw, 1.28rem);
   line-height: 1.82;
-}
-
-.tamilPoem::before {
-  content: "❦";
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  width: 48px;
-  height: 28px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(185, 135, 53, 0.28);
-  border-radius: 999px;
-  background: rgba(255, 250, 244, 0.92);
-  color: var(--gold);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1rem;
-  transform: translateX(-50%);
 }
 
 .tamilPoem span {
