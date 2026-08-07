@@ -1,11 +1,13 @@
 const videos = [
   {
-    title: "Invitation video",
+    title: "A Sacred Beginning",
+    caption: "A sacred start to a lifetime of togetherness.",
     src: "./engagement-video.mp4",
     useTamilSong: true,
   },
   {
     title: "A Special Glimpse",
+    caption: "A cherished glimpse before the auspicious day.",
     src: "./final-version.mp4",
     useTamilSong: false,
   },
@@ -17,6 +19,7 @@ const video = document.getElementById("inviteVideo");
 const source = document.getElementById("videoSource");
 const song = document.getElementById("tamilSong");
 const title = document.getElementById("videoTitle");
+const caption = document.getElementById("videoCaption");
 const counter = document.getElementById("videoCounter");
 const audioNotice = document.getElementById("audioNotice");
 const videoFrame = document.getElementById("videoFrame");
@@ -33,12 +36,13 @@ function renderVideo() {
   video.pause();
   song.pause();
   title.textContent = active.title;
+  caption.textContent = active.caption;
   source.src = active.src;
   video.muted = active.useTamilSong;
   videoFrame.classList.toggle("firstVideoFrame", activeVideoIndex === 0);
   videoFrame.classList.toggle("secondVideoFrame", activeVideoIndex === 1);
   if (activeVideoIndex === 0) {
-    video.setAttribute("poster", "./engagement-video-poster-rings.png");
+    video.setAttribute("poster", "./first-video-temple-poster.png");
   } else {
     video.setAttribute("poster", "./second-video-poster.svg");
   }
