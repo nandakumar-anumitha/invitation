@@ -200,6 +200,28 @@ h1 {
   margin: 18px 0 0;
 }
 
+.tamilPoem {
+  display: grid;
+  gap: 3px;
+  padding-left: 18px;
+  border-left: 3px solid rgba(185, 135, 53, 0.68);
+  font-size: clamp(1rem, 1.8vw, 1.16rem);
+  line-height: 1.62;
+}
+
+.tamilPoem span {
+  display: block;
+}
+
+.tamilPoem strong {
+  display: block;
+  margin-top: 8px;
+  color: var(--teal);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.18em;
+  font-weight: 700;
+}
+
 .heroActions,
 .footerActions {
   display: flex;

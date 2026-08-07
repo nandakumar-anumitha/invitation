@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 const invitation = {
   groom: "V. Nandakumar",
-  bride: "CMA K. Anumitha",
+  bride: "K. Anumitha",
   date: "23.08.2026",
   time: "10:30 AM",
   venue: "Prem Mahal",
@@ -149,7 +149,13 @@ export default function Home() {
             beginning of their forever on {invitation.date} at{" "}
             <span className="nowrap">{invitation.time}.</span>
           </p>
-          <p className="tamilLine">உங்கள் வருகையால் எங்கள் நாள் இன்னும் அழகாகும்</p>
+          <p className="tamilLine tamilPoem">
+            <span>விதி எழுதிய வரிகளை,</span>
+            <span>காதல் அழகாக வாசித்தது...</span>
+            <span>இன்று இரு இதயங்கள்,</span>
+            <span>ஒரு வாழ்வாக இணைந்து தொடங்கும் நாள்.</span>
+            <strong>அனு ❤️ நந்து</strong>
+          </p>
           <div className="heroActions" aria-label="Invitation actions">
             <a className="primaryButton" href="#details">
               View Details

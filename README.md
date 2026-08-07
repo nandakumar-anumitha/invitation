@@ -1,6 +1,6 @@
 # Nandakumar & Anumitha Engagement Invitation
 
-A modern engagement invitation website for V. Nandakumar and CMA K. Anumitha.
+A modern engagement invitation website for V. Nandakumar and K. Anumitha.
 
 ## Live Invitation
 
