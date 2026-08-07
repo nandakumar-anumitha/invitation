@@ -312,10 +312,10 @@ export default function Home() {
 
       <section className="messageBand" aria-label="Invitation message">
         <div className="messageContent">
-          <p className="script">Together with their families</p>
-          <h2>Please join us for a day filled with love, laughter, and blessings.</h2>
           <p>
-            Your presence will make this celebration warmer and more memorable.
+            Your presence is the greatest gift to us. Join us in celebrating
+            this special occasion and fill our day with your love, laughter, and
+            blessings.
           </p>
           <p className="tamilBlessing">
             உங்கள் வருகையும் வாழ்த்துகளும் எங்கள் விழாவை அழகாக்கும்.
