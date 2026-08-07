@@ -3,50 +3,183 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>V. Nandakumar & CMA K. Anumitha Engagement Invitation</title>
+    <title>V. Nandakumar & K. Anumitha Engagement Invitation</title>
     <meta
       name="description"
-      content="You are invited to celebrate the engagement ceremony on 23.08.2026 at 10:30 AM."
+      content="Join V. Nandakumar and K. Anumitha for their engagement ceremony on 23.08.2026 at Prem Mahal, Mathur."
     />
-    <meta property="og:title" content="V. Nandakumar & CMA K. Anumitha Engagement Invitation" />
+    <meta property="og:title" content="V. Nandakumar & K. Anumitha Engagement Invitation" />
     <meta
       property="og:description"
-      content="You are invited to celebrate the engagement ceremony on 23.08.2026 at 10:30 AM."
+      content="You are invited to celebrate their engagement on 23.08.2026 at 10:30 AM."
     />
-    <meta property="og:image" content="https://nandakumar-anumitha.github.io/invitation/static-site/og-whatsapp-big.jpg" />
+    <meta property="og:url" content="https://nandakumar-anumitha.github.io/invitation/" />
+    <meta property="og:site_name" content="Nandakumar & Anumitha Engagement Invitation" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://nandakumar-anumitha.github.io/invitation/og-whatsapp-big.jpg" />
+    <meta property="og:image:secure_url" content="https://nandakumar-anumitha.github.io/invitation/og-whatsapp-big.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="1200" />
-    <meta http-equiv="refresh" content="0; url=./static-site/" />
-    <style>
-      html,
-      body {
-        margin: 0;
-        min-height: 100%;
-        background: #fff7ed;
-        color: #064e4e;
-        font-family: Georgia, "Times New Roman", serif;
-      }
-
-      body {
-        display: grid;
-        min-height: 100vh;
-        place-items: center;
-        text-align: center;
-      }
-
-      a {
-        color: #064e4e;
-        font-weight: 700;
-      }
-    </style>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://nandakumar-anumitha.github.io/invitation/og-whatsapp-big.jpg" />
+    <link rel="icon" href="./favicon.svg" />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main>
-      <h1>Opening the engagement invitation...</h1>
-      <p><a href="./static-site/">Open invitation</a></p>
+      <div class="petalRain" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <section class="hero" aria-label="Engagement invitation">
+        <div class="heroOverlay"></div>
+        <div class="heroContent">
+          <p class="eyebrow">Engagement Ceremony</p>
+          <h1 class="coupleTitle">
+            <span><strong>V. Nandakumar</strong></span>
+            <em>&</em>
+            <span><strong>CMA K. Anumitha</strong></span>
+          </h1>
+          <p class="intro">
+            With the blessings of our families, we invite you to bless the
+            beginning of their forever on 23.08.2026 at <span class="nowrap">10:30 AM.</span>
+          </p>
+          <p class="tamilLine">உங்கள் ஆசீர்வாதம் எங்கள் வாழ்வின் இனிய தொடக்கமாகும்</p>
+          <div class="heroActions" aria-label="Invitation actions">
+            <a class="primaryButton" href="#details">View Details</a>
+            <a
+              class="secondaryButton"
+              href="https://wa.me/?text=Congratulations%20to%20Nandakumar%20%26%20Anumitha%20on%20their%20engagement.%20Wishing%20them%20a%20lifetime%20of%20happiness%20and%20togetherness."
+            >
+              Send Wishes
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="saveDateBand" aria-label="Save the date">
+        <div class="saveDateCard">
+          <span>Save the Date</span>
+          <strong>23.08.2026</strong>
+          <p>10:30 AM | Prem Mahal</p>
+        </div>
+      </section>
+
+      <section class="videoBand" aria-label="Engagement invitation video">
+        <div class="videoContent">
+          <p class="script">Invitation Films</p>
+          <h2 class="videoHeading" id="videoTitle">Invitation video</h2>
+          <div class="videoFrame firstVideoFrame" id="videoFrame">
+            <video id="inviteVideo" controls muted playsinline preload="metadata" poster="./engagement-video-poster-rings.png">
+              <source id="videoSource" src="./engagement-video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <audio id="tamilSong" src="./tamil-engagement-song.mp3" preload="auto"></audio>
+          </div>
+          <div class="videoControls" aria-label="Video playlist controls">
+            <button type="button" id="previousVideo">Previous</button>
+            <div class="videoDots" aria-label="Choose video">
+              <button class="activeDot" type="button" data-video-index="0" aria-label="Show Invitation video"></button>
+              <button type="button" data-video-index="1" aria-label="Show A Special Glimpse"></button>
+            </div>
+            <button type="button" id="nextVideo">Next</button>
+          </div>
+          <p class="audioNotice" id="audioNotice" hidden>
+            Tap play again if your browser pauses the song.
+          </p>
+        </div>
+      </section>
+
+      <section class="countdownBand" aria-label="Countdown to engagement">
+        <div class="countdownContent">
+          <p class="script">The Auspicious Day Awaits</p>
+          <div class="countdownGrid">
+            <span><strong id="days">0</strong>Days</span>
+            <span><strong id="hours">0</strong>Hours</span>
+            <span><strong id="minutes">0</strong>Minutes</span>
+          </div>
+          <a
+            class="calendarButton"
+            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=V.%20Nandakumar%20%26%20CMA%20K.%20Anumitha%20Engagement%20Ceremony&dates=20260823T050000Z/20260823T080000Z&details=Engagement%20ceremony%20of%20V.%20Nandakumar%20%26%20CMA%20K.%20Anumitha.%20Venue%3A%20Prem%20Mahal%2C%201st%20Main%20Road%2C%20MMDA%2C%20TNHB%20Layout%2C%20Mathur%2C%20Tamil%20Nadu&location=Prem%20Mahal%2C%201st%20Main%20Road%2C%20MMDA%2C%20TNHB%20Layout%2C%20Mathur%2C%20Tamil%20Nadu"
+          >
+            Add to Calendar
+          </a>
+        </div>
+      </section>
+
+      <section id="details" class="detailsBand" aria-label="Event details">
+        <div class="detailsGrid">
+          <article class="detailCard">
+            <span>Date</span>
+            <strong>23.08.2026</strong>
+          </article>
+          <article class="detailCard">
+            <span>Time</span>
+            <strong>10:30 AM</strong>
+          </article>
+          <article class="detailCard">
+            <span>Venue</span>
+            <strong>Prem Mahal</strong>
+            <p>1st Main Road, MMDA, TNHB Layout, Mathur, Tamil Nadu</p>
+          </article>
+        </div>
+        <div class="venuePreview">
+          <div>
+            <span>Venue Location</span>
+            <strong>Prem Mahal, Mathur</strong>
+            <p>1st Main Road, MMDA, TNHB Layout, Mathur, Tamil Nadu</p>
+          </div>
+          <a
+            class="venueMapButton"
+            href="https://www.google.com/maps/search/?api=1&query=Prem%20Mahal%2C%201st%20Main%20Road%2C%20MMDA%2C%20TNHB%20Layout%2C%20Mathur%2C%20Tamil%20Nadu"
+          >
+            Open Map
+          </a>
+        </div>
+      </section>
+
+      <section class="messageBand" aria-label="Invitation message">
+        <div class="messageContent">
+          <p class="script">Together with their families</p>
+          <h2>Please join us for an evening of love, laughter, and blessings.</h2>
+          <p>Your presence will make this celebration warmer and more memorable.</p>
+          <p class="tamilBlessing">உங்கள் அன்பும் ஆசீர்வாதமும் எங்கள் விழாவை சிறப்பாக்கும்.</p>
+          <div class="footerActions">
+            <a
+              class="primaryButton"
+              href="https://www.google.com/maps/search/?api=1&query=Prem%20Mahal%2C%201st%20Main%20Road%2C%20MMDA%2C%20TNHB%20Layout%2C%20Mathur%2C%20Tamil%20Nadu"
+            >
+              Open Map
+            </a>
+            <a class="secondaryButton" id="shareInviteFooter" href="#">Share Map Location</a>
+          </div>
+          <div class="rsvp contactCards">
+            <span>Awaiting your presence</span>
+            <div class="contactCard">
+              <strong>Aravind</strong>
+              <p>78455 04099</p>
+              <div>
+                <a href="tel:+917845504099">Call</a>
+                <a href="https://wa.me/917845504099?text=Hello%2C%20I%20am%20contacting%20you%20regarding%20the%20engagement%20ceremony.">WhatsApp</a>
+              </div>
+            </div>
+            <div class="contactCard">
+              <strong>Nanda</strong>
+              <p>8072734913</p>
+              <div>
+                <a href="tel:+918072734913">Call</a>
+                <a href="https://wa.me/918072734913?text=Hello%2C%20I%20am%20contacting%20you%20regarding%20the%20engagement%20ceremony.">WhatsApp</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <nav class="mobileQuickBar" aria-label="Quick actions">
+        <a href="https://wa.me/?text=Congratulations%20to%20Nandakumar%20%26%20Anumitha%20on%20their%20engagement.%20Wishing%20them%20a%20lifetime%20of%20happiness%20and%20togetherness.">Send Wishes</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Prem%20Mahal%2C%201st%20Main%20Road%2C%20MMDA%2C%20TNHB%20Layout%2C%20Mathur%2C%20Tamil%20Nadu">Map</a>
+      </nav>
     </main>
-    <script>
-      window.location.replace("./static-site/");
-    </script>
+    <script src="./script.js"></script>
   </body>
 </html>

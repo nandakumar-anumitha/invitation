@@ -1,0 +1,850 @@
+:root {
+  --background: #fffaf4;
+  --foreground: #173536;
+  --muted: #6f6760;
+  --teal: #0f4b4b;
+  --rose: #b95b65;
+  --gold: #b98735;
+  --ivory: #fffaf4;
+  --cream: #f4eadc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.petalRain {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.petalRain span {
+  position: absolute;
+  top: -48px;
+  left: calc(var(--x) * 1%);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 70% 30% 70% 30%;
+  background:
+    radial-gradient(circle at 68% 32%, rgba(255, 255, 255, 0.86), transparent 25%),
+    linear-gradient(135deg, rgba(255, 211, 220, 0.9), rgba(185, 91, 101, 0.72));
+  box-shadow: 0 6px 14px rgba(185, 91, 101, 0.12);
+  opacity: 0.72;
+  transform: rotate(45deg);
+  animation: petalFall var(--duration) linear infinite;
+  animation-delay: var(--delay);
+}
+
+.petalRain span:nth-child(1) { --x: 6; --size: 13px; --duration: 12s; --delay: -1s; }
+.petalRain span:nth-child(2) { --x: 14; --size: 9px; --duration: 15s; --delay: -8s; }
+.petalRain span:nth-child(3) { --x: 21; --size: 15px; --duration: 13s; --delay: -4s; }
+.petalRain span:nth-child(4) { --x: 29; --size: 10px; --duration: 17s; --delay: -11s; }
+.petalRain span:nth-child(5) { --x: 37; --size: 12px; --duration: 14s; --delay: -6s; }
+.petalRain span:nth-child(6) { --x: 44; --size: 8px; --duration: 16s; --delay: -13s; }
+.petalRain span:nth-child(7) { --x: 52; --size: 14px; --duration: 12s; --delay: -9s; }
+.petalRain span:nth-child(8) { --x: 61; --size: 10px; --duration: 18s; --delay: -3s; }
+.petalRain span:nth-child(9) { --x: 69; --size: 13px; --duration: 15s; --delay: -12s; }
+.petalRain span:nth-child(10) { --x: 77; --size: 9px; --duration: 13s; --delay: -5s; }
+.petalRain span:nth-child(11) { --x: 84; --size: 15px; --duration: 17s; --delay: -10s; }
+.petalRain span:nth-child(12) { --x: 93; --size: 11px; --duration: 14s; --delay: -2s; }
+@keyframes petalFall {
+  0% {
+    transform: translate3d(0, -8vh, 0) rotate(20deg);
+  }
+
+  50% {
+    transform: translate3d(34px, 52vh, 0) rotate(170deg);
+  }
+
+  100% {
+    transform: translate3d(-24px, 108vh, 0) rotate(330deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petalRain {
+    display: none;
+  }
+}
+
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-image: url("./engagement-hero.png");
+  background-position: center right;
+  background-size: cover;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 250, 244, 0.96) 0%, rgba(255, 250, 244, 0.78) 43%, rgba(255, 250, 244, 0.16) 100%),
+    linear-gradient(0deg, rgba(15, 75, 75, 0.08), rgba(15, 75, 75, 0.08));
+}
+
+.heroContent {
+  position: relative;
+  width: min(650px, calc(100% - 40px));
+  margin-left: clamp(20px, 7vw, 96px);
+  padding: 96px 0 72px;
+  animation: riseIn 720ms ease both;
+}
+
+.eyebrow,
+.script {
+  margin: 0 0 16px;
+  color: var(--rose);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  margin: 0;
+  color: var(--teal);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+h1 {
+  max-width: 12ch;
+  font-size: clamp(2.65rem, 6.8vw, 5.8rem);
+  line-height: 0.98;
+}
+
+.coupleTitle {
+  display: grid;
+  gap: 8px;
+}
+
+.coupleTitle strong {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.18em;
+  font: inherit;
+  white-space: nowrap;
+}
+
+.coupleTitle small {
+  color: var(--gold);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.3em;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+}
+
+.coupleTitle em {
+  width: fit-content;
+  margin: 4px 0 2px;
+  color: var(--rose);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  font-style: italic;
+  line-height: 0.9;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.intro {
+  max-width: 520px;
+  margin: 28px 0 0;
+  color: #314747;
+  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+  line-height: 1.65;
+}
+
+.tamilLine,
+.tamilBlessing {
+  color: var(--rose);
+  font-size: clamp(1rem, 2vw, 1.22rem);
+  font-weight: 700;
+  line-height: 1.8;
+}
+
+.tamilLine {
+  max-width: 520px;
+  margin: 18px 0 0;
+}
+
+.heroActions,
+.footerActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 36px;
+}
+
+.primaryButton,
+.secondaryButton {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0 24px;
+  border: 1px solid var(--teal);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.primaryButton {
+  background: var(--teal);
+  color: white;
+  box-shadow: 0 18px 45px rgba(15, 75, 75, 0.22);
+}
+
+.secondaryButton {
+  background: rgba(255, 250, 244, 0.7);
+  color: var(--teal);
+}
+
+.saveDateBand {
+  position: relative;
+  padding: 34px 20px;
+  background: var(--teal);
+}
+
+.saveDateCard {
+  width: min(860px, 100%);
+  min-height: 132px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  padding: 26px 20px;
+  border: 1px solid rgba(242, 217, 180, 0.42);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(255, 250, 244, 0.1), rgba(185, 135, 53, 0.14));
+  color: white;
+  text-align: center;
+  animation: riseIn 720ms 120ms ease both;
+}
+
+.saveDateCard span {
+  color: #f2d9b4;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.saveDateCard strong {
+  color: white;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.4rem, 7vw, 4.8rem);
+  font-weight: 500;
+  line-height: 0.95;
+}
+
+.saveDateCard p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.videoBand {
+  position: relative;
+  padding: clamp(48px, 8vw, 90px) 20px;
+  background: linear-gradient(180deg, var(--ivory), #f7efe4);
+}
+
+.saveDateBand::before,
+.videoBand::before,
+.countdownBand::before,
+.detailsBand::before,
+.messageBand::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(360px, calc(100% - 72px));
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(185, 135, 53, 0.3),
+    rgba(242, 217, 180, 0.95),
+    rgba(185, 135, 53, 0.3),
+    transparent
+  );
+  transform: translateX(-50%);
+}
+
+.saveDateBand::after,
+.videoBand::after,
+.countdownBand::after,
+.detailsBand::after,
+.messageBand::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border: 1px solid rgba(185, 135, 53, 0.72);
+  background: var(--ivory);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.saveDateBand::after,
+.detailsBand::after {
+  background: var(--teal);
+}
+
+.videoContent {
+  width: min(960px, 100%);
+  margin: 0 auto;
+  text-align: center;
+  animation: riseIn 720ms 180ms ease both;
+}
+
+.videoHeading {
+  margin-bottom: 22px;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.05;
+}
+
+.videoFrame {
+  overflow: hidden;
+  border: 1px solid rgba(15, 75, 75, 0.18);
+  border-radius: 8px;
+  background: #102f2f;
+  box-shadow: 0 28px 70px rgba(15, 75, 75, 0.18);
+}
+
+.videoFrame video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.firstVideoFrame video {
+  object-fit: cover;
+}
+
+.secondVideoFrame {
+  width: min(430px, 100%);
+  margin: 0 auto;
+  aspect-ratio: 9 / 16;
+  background:
+    linear-gradient(135deg, rgba(255, 250, 244, 0.98), rgba(244, 234, 220, 0.92)),
+    radial-gradient(circle at 25% 20%, rgba(185, 91, 101, 0.14), transparent 34%),
+    radial-gradient(circle at 80% 80%, rgba(185, 135, 53, 0.24), transparent 38%);
+}
+
+.secondVideoFrame video {
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+.audioNotice {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.videoControls {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 20px;
+  padding: 8px;
+  border: 1px solid rgba(15, 75, 75, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 250, 244, 0.76);
+}
+
+.videoControls button {
+  min-height: 38px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--teal);
+  color: white;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0 16px;
+  text-transform: uppercase;
+}
+
+.videoControls span {
+  min-width: 46px;
+  color: var(--teal);
+  font-weight: 800;
+}
+
+.videoDots {
+  min-width: 62px;
+  display: inline-flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.videoDots button {
+  width: 12px;
+  min-height: 12px;
+  height: 12px;
+  padding: 0;
+  border: 1px solid var(--teal);
+  background: transparent;
+}
+
+.videoDots .activeDot {
+  background: var(--rose);
+  border-color: var(--rose);
+}
+
+.countdownBand {
+  position: relative;
+  padding: clamp(48px, 7vw, 78px) 20px;
+  background: #fff8ef;
+}
+
+.countdownContent {
+  width: min(820px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.countdownGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 75, 75, 0.16);
+  border-radius: 8px;
+  background: rgba(15, 75, 75, 0.16);
+}
+
+.countdownGrid span {
+  display: grid;
+  gap: 8px;
+  padding: clamp(22px, 4vw, 34px) 12px;
+  background: var(--ivory);
+  color: var(--rose);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.countdownGrid strong {
+  color: var(--teal);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.2rem, 6vw, 4.2rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 0.95;
+}
+
+.calendarButton {
+  min-height: 48px;
+  margin-top: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--teal);
+  border-radius: 999px;
+  background: var(--teal);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0 24px;
+  text-transform: uppercase;
+}
+
+.detailsBand {
+  position: relative;
+  background: var(--teal);
+  color: white;
+  padding: 34px clamp(20px, 5vw, 72px);
+}
+
+.detailsGrid {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.detailCard {
+  min-height: 148px;
+  padding: 28px;
+  background: var(--teal);
+}
+
+.detailCard span {
+  display: block;
+  margin-bottom: 14px;
+  color: #f2d9b4;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.detailCard strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.detailCard p {
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+.venuePreview {
+  width: min(1120px, 100%);
+  margin: 28px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 24px;
+  border: 1px solid rgba(242, 217, 180, 0.34);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(255, 250, 244, 0.1), rgba(15, 75, 75, 0.08));
+}
+
+.venuePreview span {
+  display: block;
+  margin-bottom: 10px;
+  color: #f2d9b4;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.venuePreview strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.55rem, 3vw, 2.3rem);
+  font-weight: 500;
+}
+
+.venuePreview p {
+  max-width: 620px;
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.6;
+}
+
+.venueMapButton {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border: 1px solid #f2d9b4;
+  border-radius: 999px;
+  color: #f2d9b4;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0 20px;
+  text-transform: uppercase;
+}
+
+.messageBand {
+  position: relative;
+  padding: clamp(64px, 10vw, 116px) 20px;
+  background:
+    radial-gradient(circle at top left, rgba(185, 91, 101, 0.16), transparent 34%),
+    linear-gradient(180deg, var(--ivory), var(--cream));
+}
+
+.messageContent {
+  width: min(780px, 100%);
+  margin: 0 auto;
+  text-align: center;
+  animation: riseIn 720ms 220ms ease both;
+}
+
+.messageContent h2 {
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  line-height: 1.06;
+}
+
+.messageContent p {
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+.messageContent .tamilBlessing {
+  color: var(--rose);
+}
+
+.messageContent .footerActions {
+  justify-content: center;
+}
+
+.contactSection {
+  width: min(680px, 100%);
+  margin: 34px auto 0;
+  text-align: center;
+}
+
+.contactEyebrow {
+  margin: 0 0 8px;
+  color: var(--rose);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.contactSection h3 {
+  margin: 0;
+  color: var(--teal);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+.contactSection p:not(.contactEyebrow) {
+  margin: 12px auto 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.rsvp {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 18px;
+  color: var(--teal);
+}
+
+.rsvp span {
+  width: 100%;
+  color: var(--rose);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.contactCards {
+  align-items: stretch;
+  gap: 16px;
+}
+
+.contactCard {
+  width: min(330px, 100%);
+  padding: 20px;
+  border: 1px solid rgba(15, 75, 75, 0.16);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 244, 0.92), rgba(244, 234, 220, 0.74));
+  box-shadow: 0 18px 48px rgba(15, 75, 75, 0.1);
+  text-align: left;
+}
+
+.contactCard strong {
+  display: block;
+  color: var(--teal);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+.contactCard p {
+  margin: 6px 0 14px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.contactCard div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contactCard a,
+.contactCard button {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--teal);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--teal);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.contactCard a:first-child {
+  background: var(--teal);
+  color: white;
+}
+
+.mobileQuickBar {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 10;
+  display: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 75, 75, 0.18);
+  border-radius: 999px;
+  background: rgba(15, 75, 75, 0.18);
+  box-shadow: 0 18px 42px rgba(15, 75, 75, 0.24);
+}
+
+.mobileQuickBar a {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 250, 244, 0.96);
+  color: var(--teal);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  .hero {
+    min-height: 86vh;
+    align-items: flex-end;
+    background-position: 64% center;
+  }
+
+  .heroOverlay {
+    background:
+      linear-gradient(0deg, rgba(255, 250, 244, 0.98) 0%, rgba(255, 250, 244, 0.82) 45%, rgba(255, 250, 244, 0.14) 100%),
+      linear-gradient(0deg, rgba(15, 75, 75, 0.08), rgba(15, 75, 75, 0.08));
+  }
+
+  .heroContent {
+    width: calc(100% - 32px);
+    margin: 0 auto;
+    padding: 260px 0 42px;
+  }
+
+  h1 {
+    max-width: 100%;
+    font-size: 2.25rem;
+  }
+
+  .coupleTitle strong {
+    max-width: 100%;
+    font-size: 2.25rem;
+  }
+
+  .coupleTitle small {
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+  }
+
+  .detailsGrid,
+  .countdownGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .venuePreview {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .venueMapButton {
+    width: 100%;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+  }
+
+  .contactCard {
+    width: 100%;
+    text-align: center;
+  }
+
+  .contactCard div {
+    justify-content: center;
+  }
+
+  .mobileQuickBar {
+    display: grid;
+  }
+
+  body {
+    padding-bottom: 76px;
+  }
+}
