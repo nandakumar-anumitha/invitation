@@ -22,7 +22,7 @@ const audioNotice = document.getElementById("audioNotice");
 const videoFrame = document.getElementById("videoFrame");
 const videoDots = Array.from(document.querySelectorAll("[data-video-index]"));
 const shareText = encodeURIComponent(
-  `You are warmly invited to V. Nandakumar B.E & CMA K. Anumitha B.COM's engagement on 23.08.2026 at 10:30 AM, Prem Mahal. ${window.location.href}`
+  `You are warmly invited to V. Nandakumar & CMA K. Anumitha's engagement on 23.08.2026 at 10:30 AM, Prem Mahal. ${window.location.href}`
 );
 const mapShareText = encodeURIComponent(
   "Venue location: Prem Mahal, 1st Main Road, MMDA, TNHB Layout, Mathur, Tamil Nadu. Map: https://www.google.com/maps/search/?api=1&query=Prem%20Mahal%2C%201st%20Main%20Road%2C%20MMDA%2C%20TNHB%20Layout%2C%20Mathur%2C%20Tamil%20Nadu"
