@@ -139,10 +139,7 @@ export default function Home() {
             <span>
               <strong>{invitation.groom}</strong>
             </span>
-            <em>
-              & <span className="ringMark" aria-hidden="true">💍</span>
-              <span className="heartMark" aria-hidden="true">❤️</span>
-            </em>
+            <em>&</em>
             <span>
               <strong>{invitation.bride}</strong>
             </span>
@@ -156,8 +153,10 @@ export default function Home() {
             <span>விதி எழுதிய வரிகளை,</span>
             <span>காதல் அழகாக வாசித்தது...</span>
             <span>இன்று இரு இதயங்கள்,</span>
-            <span>ஒரு வாழ்வாக இணைந்து தொடங்கும் நாள்.</span>
-            <strong>💍 நந்தா ❤️ அனு</strong>
+            <span>
+              ஒரு வாழ்வாக இணைந்து தொடங்கும் நாள்💍
+            </span>
+            <strong>நந்தா ❤️ அனு</strong>
           </p>
           <div className="heroActions" aria-label="Invitation actions">
             <a className="primaryButton" href="#details">

@@ -128,6 +128,25 @@ a {
   text-transform: uppercase;
 }
 
+.heroContent > .eyebrow {
+  position: relative;
+  width: min(100%, 620px);
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  text-align: center;
+}
+
+.heroContent > .eyebrow::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(220px, 46vw);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(185, 135, 53, 0.86), transparent);
+  transform: translateX(-50%);
+}
+
 h1,
 h2 {
   margin: 0;
@@ -144,8 +163,11 @@ h1 {
 }
 
 .coupleTitle {
+  width: min(100%, 620px);
   display: grid;
-  gap: 8px;
+  justify-items: center;
+  gap: 10px;
+  text-align: center;
 }
 
 .coupleTitle strong {
@@ -153,6 +175,7 @@ h1 {
   align-items: baseline;
   gap: 0.18em;
   font: inherit;
+  text-shadow: 0 9px 24px rgba(5, 75, 78, 0.13);
   white-space: nowrap;
 }
 
@@ -167,28 +190,16 @@ h1 {
 
 .coupleTitle em {
   width: fit-content;
-  margin: 4px 0 2px;
-  color: var(--rose);
+  margin: 2px auto 0;
+  padding: 6px 24px 8px;
+  border-top: 1px solid rgba(185, 135, 53, 0.38);
+  border-bottom: 1px solid rgba(185, 135, 53, 0.38);
+  color: var(--gold);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2rem, 4vw, 3.6rem);
+  font-size: clamp(1.85rem, 3.4vw, 3.15rem);
   font-style: italic;
-  line-height: 0.9;
-}
-
-.ringMark {
-  display: inline-block;
-  margin-left: 8px;
-  font-size: 0.45em;
-  vertical-align: 0.1em;
-  filter: drop-shadow(0 3px 8px rgba(154, 111, 36, 0.26));
-}
-
-.heartMark {
-  display: inline-block;
-  margin-left: 4px;
-  font-size: 0.34em;
-  vertical-align: 0.14em;
-  filter: drop-shadow(0 3px 8px rgba(157, 54, 84, 0.24));
+  line-height: 0.78;
+  text-shadow: 0 6px 16px rgba(154, 111, 36, 0.18);
 }
 
 .nowrap {
