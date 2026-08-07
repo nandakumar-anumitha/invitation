@@ -139,7 +139,7 @@ export default function Home() {
             <span>
               <strong>{invitation.groom}</strong>
             </span>
-            <em>&</em>
+            <em>❤️</em>
             <span>
               <strong>{invitation.bride}</strong>
             </span>
