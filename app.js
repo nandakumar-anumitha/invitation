@@ -13,7 +13,7 @@
   const whatsapp = (message, recipient = '') => `https://wa.me/${phone(recipient)}?text=${encodeURIComponent(message)}`;
   const openWhatsApp = (message, recipient) => { window.open(whatsapp(message, recipient), '_blank', 'noopener,noreferrer'); };
   let lang = 'en';
-  let countdownEvent = 'wedding';
+  let countdownEvent = 'reception';
   let toastTimer;
   const tr = (en, ta) => lang === 'ta' ? ta : en;
   function toast(message) { $('#toast').textContent = message; $('#toast').classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').classList.remove('show'), 4500); }
@@ -68,7 +68,14 @@
     const detail = eventDetails[countdownEvent];
     const remaining = Math.max(0, Math.floor((Date.parse(detail.date) - now) / 1000));
     const values = [Math.floor(remaining / 86400), Math.floor(remaining / 3600) % 24, Math.floor(remaining / 60) % 60, remaining % 60];
-    ['days', 'hours', 'minutes', 'seconds'].forEach((key, i) => { const v = String(values[i]).padStart(2, '0'); if ($('#' + key).textContent !== v) $('#' + key).textContent = v; });
+    ['days', 'hours', 'minutes', 'seconds'].forEach((key, i) => {
+      const value = String(values[i]).padStart(2, '0'), digit = $('#' + key);
+      if (digit.textContent !== value) {
+        digit.textContent = value;
+        if (digit.animate && !matchMedia('(prefers-reduced-motion: reduce)').matches) digit.animate([{opacity: 0.55, transform: 'translateY(5px)'}, {opacity: 1, transform: 'translateY(0)'}], {duration: 350, easing: 'ease-out'});
+      }
+    });
+    $('#countdown-event-title').textContent = countdownEvent === 'reception' ? tr('Wedding Reception', 'திருமண வரவேற்பு விழா') : tr('Wedding Ceremony', 'திருமண விழா');
     $('#countdown-caption').textContent = remaining ? detail.caption[lang === 'ta' ? 1 : 0] : tr('The celebration date has arrived — thank you for your love and blessings!', 'விழா நாள் வந்துவிட்டது — உங்கள் அன்புக்கும் ஆசிகளுக்கும் நன்றி!');
     $('.countdown').setAttribute('aria-label', tr(`Time until ${countdownEvent}`, countdownEvent === 'wedding' ? 'திருமணத்திற்கான காலம்' : 'வரவேற்பிற்கான காலம்'));
   }

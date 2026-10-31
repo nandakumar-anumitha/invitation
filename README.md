@@ -41,14 +41,14 @@ Leave missing values empty. The PDF placeholder remains visible until a configur
 ## Guest features
 
 - English/Tamil switch, with language preference remembered on the current browser.
-- Live wedding and reception countdowns use explicit `+05:30` timestamps. They show zero once the date arrives.
+- The reception countdown is selected by default: 15 November 2026 at 6 PM IST. Guests can switch to the wedding countdown. The maroon and gold countdown has floral artwork and subtle digit animations that respect reduced-motion preferences. Both countdowns use explicit `+05:30` timestamps. They show zero once the date arrives.
 - Downloadable `.ics` calendar events use UTC timestamps, displaying correctly across timezones. Start times are 6 PM IST on 15 November and 6 AM IST on 16 November 2026. Each event reserves one hour solely as a calendar placeholder; the actual end times were not supplied. This is explained inside the calendar description. The ceremony start is not described as a confirmed muhurtham.
 - Both events use the supplied Google Maps link. Because it is a shared short link, **Get Directions** opens that exact Maps location; the guest taps Directions there. Set `directionsUrl` only if you have a verified direct directions URL.
 - The local QR in `assets/location-qr.svg` encodes the supplied location and works without a QR service. If `locationUrl` changes, the page uses api.qrserver.com to generate its public-location QR; regenerate the local QR if you want all QR assets local. A failed QR load shows a fallback location link.
 - Customizable WhatsApp wishes open WhatsApp for the guest to send. With `rsvpPhone` configured, wishes open addressed to that number. Otherwise guests select a family recipient in WhatsApp.
 - The attendance RSVP form, personalized guest link generator, and footer WhatsApp sharing button have been removed. The WhatsApp wishes option and invitation sharing control remain available.
 - Previously shared `?guest=Guest%20Name` URLs can still display a personalized greeting. The guest-link generator is no longer shown.
-- Phone buttons appear only after valid contacts are configured.
+- A dedicated location-help call button uses the supplied number 9791277684 (`tel:+919791277684`). Additional family phone buttons appear after valid contacts are configured.
 - Decorative petals respect reduced-motion preferences. No music is included because no licensed audio was provided; nadaswaram was optional. Artwork is local SVG. Google Fonts loads online, with system fallbacks available offline.
 
 ## Files
