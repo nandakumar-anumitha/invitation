@@ -65,3 +65,11 @@ Leave missing values empty. The PDF placeholder remains visible until a configur
 - `.nojekyll` — tells GitHub Pages to serve the static files directly
 
 The supplied Google Maps link was preserved exactly. Its destination could not be independently resolved during creation. Confirm that it opens the intended venue before sharing publicly.
+
+## Full image sharing and link previews
+
+Social metadata uses `assets/wedding-share-large-v2.jpg`, a lightweight 1200 x 630 landscape card with large names and dates and the complete original portrait poster alongside them. The original poster remains unchanged at `assets/wedding-og.png`.
+
+Use **Share full invitation image** to send the original portrait as an image via the device share sheet. On browsers without file sharing, the original downloads so it can be attached as a photo in WhatsApp. **View full image** opens the original image in a separate tab. **Share selected PDF** shares the currently selected wedding/engagement PDF.
+
+These changes take effect publicly after pushing `marriage` and a successful Pages deployment. Social apps control card layouts and may cache old page metadata; a wide preview cannot force an app to display the portrait at its full original height. Sending the image itself preserves the entire poster.

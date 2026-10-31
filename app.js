@@ -104,6 +104,27 @@
     if (navigator.share) { try { await navigator.share({title:'V Nandakumar & K Anumitha', text:tr('You are warmly invited to celebrate with us.', 'எங்கள் விழாவிற்கு அன்புடன் அழைக்கிறோம்.'), url: shareUrl}); return; } catch (e) { if (e.name === 'AbortError') return; } }
     await copy(shareUrl);
   });
+  $('#share-full-image').addEventListener('click', async () => {
+    const button = $('#share-full-image');
+    const imageUrl = safeUrl('assets/wedding-og.png');
+    button.disabled = true;
+    button.textContent = tr('Preparing image…', 'படம் தயாராகிறது…');
+    try {
+      const response = await fetch(imageUrl);
+      if (!response.ok) throw new Error('Image unavailable');
+      const file = new File([await response.blob()], 'Nandakumar-Anumitha-Wedding-Invitation.png', {type:'image/png'});
+      if (navigator.share && navigator.canShare?.({files:[file]})) {
+        await navigator.share({files:[file], title:'V Nandakumar & K Anumitha — Wedding Invitation', text:siteUrl()});
+        return;
+      }
+    } catch (error) { if (error.name === 'AbortError') return; }
+    finally { button.disabled = false; button.textContent = button.dataset[lang]; }
+    // Browsers without native file sharing can still deliver the original
+    // uncropped poster for the guest to attach as a photo in WhatsApp.
+    const link = document.createElement('a'); link.href = imageUrl; link.download = 'Nandakumar-Anumitha-Wedding-Invitation.png';
+    document.body.append(link); link.click(); link.remove();
+    toast(tr('Image downloaded. Attach it as a photo in WhatsApp to share the complete invitation.', 'படம் பதிவிறக்கப்பட்டது. முழு அழைப்பிதழைப் பகிர WhatsApp இல் புகைப்படமாக இணைக்கவும்.'));
+  });
   const rsvpPhone = phone(config.rsvpPhone);
   const contacts = Array.isArray(config.contacts) ? config.contacts : [];
   contacts.forEach(contact => { const number = phone(contact.phone); if (!number) return; const a = document.createElement('a'); a.className = 'button outline'; a.href = `tel:+${number}`; a.textContent = `☎ ${contact.name || 'Family'}`; $('#contact-buttons').append(a); });
