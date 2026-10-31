@@ -3,7 +3,7 @@ window.WEDDING_CONFIG = {
   locationUrl: 'https://share.google/yBJDRBLYke2OfDeVp',
   // Optional: set to a verified Google Maps directions URL. Otherwise the
   // supplied shared location opens, where guests can select Directions.
-  directionsUrl: '',
+  directionsUrl: 'https://www.google.com/maps/search/?api=1&query=Kannabiran+Marriage+Hall+Mambakkam+Medavakkam+Main+Road+Chennai',
   // Place the actual invitation in assets/ and set this to its relative path.
   // Example: 'assets/invitation.pdf'. Leave empty until the file exists.
   pdfUrl: 'assets/invitation.pdf',

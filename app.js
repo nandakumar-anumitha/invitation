@@ -49,9 +49,9 @@
   // incorrectly passing the short URL as a Maps Directions destination.
   $('#directions').href = safeUrl(config.directionsUrl, locationUrl);
   $('#directions').addEventListener('click', () => { if (!config.directionsUrl) toast(tr('In Google Maps, tap Directions to start your journey.', 'Google Maps இல் Directions என்பதைத் தேர்ந்தெடுக்கவும்.')); });
-  $('#copy-location').addEventListener('click', () => copy(locationUrl));
+  $('#copy-location')?.addEventListener('click', () => copy(locationUrl));
   const qr = $('#qr-dialog');
-  $('#show-qr').addEventListener('click', () => {
+  $('#show-qr')?.addEventListener('click', () => {
     // Local QR is generated for the supplied location. A changed location uses
     // the public QR service; only the configured public location URL is sent.
     $('#qr-image').src = locationUrl === DEFAULT_LOCATION ? 'assets/location-qr.svg' : `https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=20&data=${encodeURIComponent(locationUrl)}`;
