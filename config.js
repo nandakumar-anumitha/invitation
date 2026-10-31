@@ -7,6 +7,13 @@ window.WEDDING_CONFIG = {
   // Place the actual invitation in assets/ and set this to its relative path.
   // Example: 'assets/invitation.pdf'. Leave empty until the file exists.
   pdfUrl: 'assets/invitation.pdf',
+  engagementPdfUrl: 'assets/engagement.pdf',
+  engagementPages: Array.from({length: 18}, (_, index) => ({
+    image: `assets/engagement/page-${index + 1}.jpg`,
+    thumbnail: `assets/engagement/thumb-${index + 1}.jpg`,
+    en: `Engagement album · Page ${index + 1}`,
+    ta: `நிச்சயதார்த்தப் புகைப்படங்கள் · பக்கம் ${index + 1}`
+  })),
   invitationPages: [
     {image: 'assets/invitation/page-1.jpg', thumbnail: 'assets/invitation/thumb-1.jpg', en: 'Sacred blessings', ta: 'இறையாசிகள்'},
     {image: 'assets/invitation/page-2.jpg', thumbnail: 'assets/invitation/thumb-2.jpg', en: 'Invitation cover', ta: 'அழைப்பிதழ் முகப்பு'},

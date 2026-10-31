@@ -92,7 +92,8 @@
   }));
   $('#share-invitation').addEventListener('click', async () => {
     if (location.protocol === 'file:' && !config.siteUrl) { toast(tr('Publish the website first to share a public invitation link.', 'பொது இணைப்பைப் பகிர முதலில் இணையதளத்தை வெளியிடவும்.')); return; }
-    const shareUrl = config.pdfUrl ? new URL(config.pdfUrl, siteUrl()).href : siteUrl();
+    const selectedPdf = activeDocument === 'engagement' ? config.engagementPdfUrl : config.pdfUrl;
+    const shareUrl = selectedPdf ? new URL(selectedPdf, siteUrl()).href : siteUrl();
     if (navigator.share) { try { await navigator.share({title:'V Nandakumar & K Anumitha', text:tr('You are warmly invited to celebrate with us.', 'எங்கள் விழாவிற்கு அன்புடன் அழைக்கிறோம்.'), url: shareUrl}); return; } catch (e) { if (e.name === 'AbortError') return; } }
     await copy(shareUrl);
   });
@@ -102,8 +103,9 @@
   $('#contact-pending').hidden = $('#contact-buttons').children.length > 0;
   $('#open-wishes').addEventListener('click', () => $('#wishes-dialog').showModal());
   $('#wishes-form').addEventListener('submit', event => { event.preventDefault(); if (!$('#wishes').value.trim()) { $('#wishes').focus(); return; } openWhatsApp($('#wishes').value.trim(), rsvpPhone); });
-  const pdfUrl = safeUrl(config.pdfUrl);
-  const invitationPages = (Array.isArray(config.invitationPages) ? config.invitationPages : []).filter(p => safeUrl(p.image));
+  let activeDocument = 'wedding';
+  let pdfUrl = safeUrl(config.pdfUrl);
+  let invitationPages = (Array.isArray(config.invitationPages) ? config.invitationPages : []).filter(p => safeUrl(p.image));
   let pageIndex = 0;
   function renderPage() {
     if (!invitationPages.length) return;
@@ -122,12 +124,16 @@
     });
   }
   function turnPage(delta) { pageIndex = Math.max(0, Math.min(invitationPages.length - 1, pageIndex + delta)); renderPage(); }
-  invitationPages.forEach((page, i) => {
+  function renderThumbnails() {
+    $('#invitation-thumbnails').replaceChildren();
+    invitationPages.forEach((page, i) => {
     const button = document.createElement('button'); button.type = 'button'; button.className = 'invitation-thumbnail';
     const img = document.createElement('img'); img.src = safeUrl(page.thumbnail, safeUrl(page.image)); img.alt = ''; img.loading = 'lazy';
     const number = document.createElement('span'); number.textContent = String(i + 1).padStart(2,'0');
     button.append(img, number); button.addEventListener('click', () => { pageIndex = i; renderPage(); }); $('#invitation-thumbnails').append(button);
-  });
+    });
+  }
+  renderThumbnails();
   $('#previous-page').addEventListener('click', () => turnPage(-1));
   $('#next-page').addEventListener('click', () => turnPage(1));
   $('#invitation-stage').addEventListener('keydown', event => {
@@ -139,18 +145,49 @@
     const show = $('#native-pdf').hidden; $('#native-pdf').hidden = !show; $('#toggle-pdf-preview').setAttribute('aria-expanded', String(show));
     if (show && !$('#pdf-frame').getAttribute('src')) $('#pdf-frame').src = pdfUrl + '#zoom=page-width';
   });
-  if (pdfUrl) {
-    // Verify a configured local/remote file before replacing the placeholder.
-    fetch(pdfUrl).then(async response => {
+  let documentRequest = 0;
+  async function loadDocument() {
+    const request = ++documentRequest;
+    $('#pdf-placeholder').hidden = true;
+    $('#pdf-ready').hidden = false;
+    $('#view-pdf').href = pdfUrl; $('#download-pdf').href = pdfUrl;
+    $('#download-pdf').download = activeDocument === 'engagement' ? 'Nandakumar-Anumitha-Engagement-Album.pdf' : 'Nandakumar-Anumitha-Wedding-Invitation.pdf';
+    if (invitationPages.length) renderPage();
+    // Read only enough bytes to confirm the PDF, instead of downloading a full
+    // 25 MB album before a guest can see its lightweight page previews.
+    try {
+      const response = await fetch(pdfUrl);
       if (!response.ok) throw new Error('Missing PDF');
-      const data = new Uint8Array(await response.arrayBuffer());
-      if (String.fromCharCode(...data.slice(0,5)) !== '%PDF-') throw new Error('Not a PDF');
+      const reader = response.body?.getReader();
+      let bytes = [];
+      if (reader) {
+        try { while (bytes.length < 5) { const {value, done} = await reader.read(); if (done) break; bytes.push(...value.slice(0, 5 - bytes.length)); } }
+        finally { await reader.cancel(); }
+      } else { bytes = new Uint8Array(await response.arrayBuffer()).slice(0,5); }
+      if (String.fromCharCode(...bytes) !== '%PDF-') throw new Error('Not a PDF');
+      if (request !== documentRequest) return;
       $('#pdf-placeholder').hidden = true; $('#pdf-ready').hidden = false;
-      $('#view-pdf').href = pdfUrl; $('#download-pdf').href = pdfUrl;
-      if (invitationPages.length) renderPage();
-      else { $('#invitation-stage').hidden = true; $('.page-navigation').hidden = true; $('#native-pdf').hidden = false; $('#pdf-frame').src = pdfUrl + '#zoom=page-width'; }
-    }).catch(() => { /* Keep an honest placeholder when a PDF is unavailable. */ });
+      if (!invitationPages.length) { $('#invitation-stage').hidden = true; $('.page-navigation').hidden = true; $('#native-pdf').hidden = false; $('#pdf-frame').src = pdfUrl + '#zoom=page-width'; }
+    } catch {
+      if (request !== documentRequest) return;
+      if (!invitationPages.length) { $('#pdf-placeholder').hidden = false; $('#pdf-ready').hidden = true; }
+      // Local file previews can still show their images without fetch access.
+    }
   }
+  if (pdfUrl) loadDocument();
+  $$('[data-document]').forEach(button => button.addEventListener('click', () => {
+    if (activeDocument === button.dataset.document) return;
+    activeDocument = button.dataset.document;
+    pdfUrl = safeUrl(activeDocument === 'engagement' ? config.engagementPdfUrl : config.pdfUrl);
+    const pages = activeDocument === 'engagement' ? config.engagementPages : config.invitationPages;
+    invitationPages = (Array.isArray(pages) ? pages : []).filter(p => safeUrl(p.image));
+    pageIndex = 0; $('#pdf-zoom').value = 'page-width';
+    $('#invitation-stage').classList.remove('is-zoomed'); $('#invitation-paper').style.width = '';
+    $('#native-pdf').hidden = true; $('#pdf-frame').removeAttribute('src');
+    $('#toggle-pdf-preview').setAttribute('aria-expanded', 'false');
+    $$('[data-document]').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+    renderThumbnails(); renderPage(); loadDocument();
+  }));
   $('#pdf-zoom').addEventListener('change', () => {
     const zoom = $('#pdf-zoom').value, fit = zoom === 'page-width';
     $('#invitation-stage').classList.toggle('is-zoomed', !fit);

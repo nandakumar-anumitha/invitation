@@ -25,7 +25,7 @@ Open `index.html` for a basic preview. To use PDF checks, serve the folder: run 
 
 The six supplied invitation photographs have been combined into `assets/invitation.pdf`. The six-page PDF uses consistent ivory and antique-gold framing, page labels, and bookmarks. Photographs have conservative brightness, contrast, and sharpening adjustments; printed wording is preserved. Original photo artifacts such as creases, perspective, and glare remain.
 
-The website now includes an image-based six-page reader with thumbnails, previous/next controls, 75–200% zoom, fullscreen viewing (with a separate PDF fallback), and an optional embedded native PDF preview. The page images are local assets and work on GitHub Pages.
+The website includes separate Wedding invitation (6 pages) and Engagement album (18 pages) tabs, with thumbnails, previous/next controls, 75–200% zoom, fullscreen viewing, original PDF downloads, and an optional native PDF preview. The engagement PDF is an unchanged copy of the supplied photo album. Its lightweight JPEG page previews load individually; the full original PDF downloads only when opened or downloaded. The reader uses natural page height and normal vertical scrolling so hovering or swiping over an image does not trap page scrolling. At larger zoom levels, horizontal scrolling remains available. The page images are local assets and work on GitHub Pages.
 
 Edit **config.js** to replace the PDF or add phone numbers:
 
@@ -59,6 +59,8 @@ Leave missing values empty. The PDF placeholder remains visible until a configur
 - `config.js` — optional PDF, phone numbers, public URL, and venue links
 - `assets/invitation.pdf` — six-page invitation PDF
 - `assets/invitation/` — enhanced page images and thumbnails
+- `assets/engagement.pdf` — original 18-page engagement photo album
+- `assets/engagement/` — album page previews and thumbnails
 - `assets/location-qr.svg` — scannable QR code for the supplied location
 - `.nojekyll` — tells GitHub Pages to serve the static files directly
 
