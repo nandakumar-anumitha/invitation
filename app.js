@@ -240,7 +240,7 @@
       await $('#invitation-viewer').requestFullscreen();
     } catch { window.open(pdfUrl, '_blank', 'noopener,noreferrer'); }
   });
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if ($('#petals') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     for (let i = 0; i < 16; i++) { const petal = document.createElement('i'); petal.className = 'petal'; petal.style.left = `${i * 6.6}%`; petal.style.animationDuration = `${12 + i % 7}s`; petal.style.animationDelay = `${-i * 2.3}s`; $('#petals').append(petal); }
   }
   try { const saved = localStorage.getItem('wedding-language'); if (saved === 'ta') lang = saved; } catch {}
