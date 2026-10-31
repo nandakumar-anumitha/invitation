@@ -68,8 +68,10 @@ The supplied Google Maps link was preserved exactly. Its destination could not b
 
 ## Full image sharing and link previews
 
-Social metadata uses `assets/wedding-share-large-v2.jpg`, a lightweight 1200 x 630 landscape card with large names and dates and the complete original portrait poster alongside them. The original poster remains unchanged at `assets/wedding-og.png`.
+Social metadata uses `assets/wedding-portrait-full-v3.jpg`: the complete original 941 x 1672 portrait, encoded as a lighter JPEG (about 264 KB), with no cropping or new layout. The original PNG remains unchanged at `assets/wedding-og.png`.
 
-Use **Share full invitation image** to send the original portrait as an image via the device share sheet. On browsers without file sharing, the original downloads so it can be attached as a photo in WhatsApp. **View full image** opens the original image in a separate tab. **Share selected PDF** shares the currently selected wedding/engagement PDF.
+Use **Share invitation link** to share the website URL. Its link-preview card leads to the website. The website supplies the original portrait image as its preferred preview, while WhatsApp controls the final displayed shape, size, and crop. The website cannot force a full-height portrait card in WhatsApp.
 
-These changes take effect publicly after pushing `marriage` and a successful Pages deployment. Social apps control card layouts and may cache old page metadata; a wide preview cannot force an app to display the portrait at its full original height. Sending the image itself preserves the entire poster.
+Use **Share full invitation image** to send the original portrait as a photo. On browsers without file sharing, the original downloads for attachment in WhatsApp. Tapping a photo opens the photo, rather than the website; the site URL is included separately. **View full image** opens the original in a separate tab. **Share selected PDF** shares the currently selected wedding/engagement PDF.
+
+These changes take effect publicly after pushing `marriage` and a successful Pages deployment. Sharing apps may cache old page metadata.

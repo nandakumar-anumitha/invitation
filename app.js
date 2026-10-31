@@ -104,6 +104,16 @@
     if (navigator.share) { try { await navigator.share({title:'V Nandakumar & K Anumitha', text:tr('You are warmly invited to celebrate with us.', 'எங்கள் விழாவிற்கு அன்புடன் அழைக்கிறோம்.'), url: shareUrl}); return; } catch (e) { if (e.name === 'AbortError') return; } }
     await copy(shareUrl);
   });
+  $('#share-page').addEventListener('click', async () => {
+    const url = siteUrl();
+    if (navigator.share) {
+      try { await navigator.share({title:'V Nandakumar & K Anumitha — Wedding Invitation', url}); return; }
+      catch (error) { if (error.name === 'AbortError') return; }
+    }
+    // Share the webpage URL so the preview is linked to the website. Sending
+    // the poster as a photo instead opens WhatsApp's media viewer when tapped.
+    openWhatsApp(url);
+  });
   $('#share-full-image').addEventListener('click', async () => {
     const button = $('#share-full-image');
     const imageUrl = safeUrl('assets/wedding-og.png');
