@@ -2,7 +2,7 @@
   const music = document.getElementById('background-music');
   const toggle = document.getElementById('music-toggle');
   const label = document.getElementById('music-label');
-  const film = document.querySelector('#our-film video');
+  const films = [...document.querySelectorAll('.film-player video')];
   let userPaused = false;
   let resumeAfterFilm = false;
   music.volume = 0.35;
@@ -14,7 +14,7 @@
     toggle.setAttribute('aria-pressed', String(playing));
   }
   async function play() {
-    if (userPaused || (film && !film.paused)) return;
+    if (userPaused || films.some(film => !film.paused)) return;
     try { await music.play(); } catch { update(); }
   }
   toggle.addEventListener('click', () => {
@@ -39,9 +39,9 @@
   music.addEventListener('play', update);
   music.addEventListener('pause', update);
   new MutationObserver(update).observe(document.documentElement, {attributes:true, attributeFilter:['lang']});
-  if (film) {
-    film.addEventListener('play', () => { resumeAfterFilm = !music.paused; music.pause(); });
-    const resume = () => { if (resumeAfterFilm && !userPaused) play(); resumeAfterFilm = false; };
+  for (const film of films) {
+    film.addEventListener('play', () => { resumeAfterFilm = resumeAfterFilm || !music.paused; music.pause(); films.forEach(other => { if (other !== film && !other.paused) other.pause(); }); });
+    const resume = () => { if (films.some(item => !item.paused)) return; if (resumeAfterFilm && !userPaused) play(); resumeAfterFilm = false; };
     film.addEventListener('pause', resume);
     film.addEventListener('ended', resume);
   }
